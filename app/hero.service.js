@@ -15,11 +15,20 @@ var HeroService = (function () {
     function HeroService(http) {
         this.http = http;
         this.heroesUrl = 'http://localhost:3113/api/heroes'; // URL to web api
+        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     HeroService.prototype.getHeroes = function () {
         return this.http.get(this.heroesUrl)
             .toPromise()
             .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    HeroService.prototype.update = function (hero) {
+        var url = this.heroesUrl + "/" + hero.id;
+        return this.http
+            .put(url, JSON.stringify(hero), { headers: this.headers })
+            .toPromise()
+            .then(function () { return hero; })
             .catch(this.handleError);
     };
     HeroService.prototype.getHeroesSlowly = function () {
