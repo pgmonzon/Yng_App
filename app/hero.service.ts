@@ -12,6 +12,13 @@ export class HeroService {
 
   constructor(private http: Http) { }
 
+  ping() {
+    return this.http.get('http://localhost:3113/ping')
+               .toPromise()
+               .then(response => <Hero[]>response.json())
+               .catch(this.handleError);
+  }
+
   getHeroes(): Promise<Hero[]> {
     return this.http.get(this.heroesUrl)
                .toPromise()
