@@ -12,8 +12,9 @@ import { DashboardComponent }   from './dashboard.component';
 import { HeroesComponent }      from './heroes.component';
 import { HeroDetailComponent }  from './hero-detail.component';
 import { LoginComponent }       from './login.component';
+import { RegisterComponent }    from './register.component';
 import { HeroService }          from './hero.service';
-import { LoginService }  from './login.service';
+import { LoginService }         from './login.service';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { LoginService }  from './login.service';
     HeroDetailComponent,
     HeroesComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   providers: [
     HeroService,
