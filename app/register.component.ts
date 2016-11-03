@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService }  from './login.service';
+import { TokenService }  from './token.service';
 import { RegistrarFormulario } from './register';
 
 @Component({
@@ -9,7 +10,8 @@ import { RegistrarFormulario } from './register';
 
 export class RegisterComponent {
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService,
+              private tokenService: TokenService) { }
 
   formulario = new RegistrarFormulario('usuario', 'contraseña', 'example@gmail.com');
   respuesta = null
@@ -21,6 +23,10 @@ export class RegisterComponent {
   registrar(): void {
     this.respuesta = this.loginService.registrar(this.diagnostic)
     this.formulario = this.respuesta
+  }
+
+  mostrar(): void {
+    console.log(this.tokenService.pedirToken())
   }
 
   get diagnostic() { return JSON.stringify(this.formulario); }

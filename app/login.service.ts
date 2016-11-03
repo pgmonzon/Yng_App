@@ -11,6 +11,7 @@ export class LoginService {
   private loginUrl = 'http://localhost:3113/api/usuarios/login'
   private registerUrl = 'http://localhost:3113/api/usuarios/register'
   private headers = new Headers({'Content-Type': 'application/json'});
+  private token = null
 
   constructor(private http: Http) { }
 
