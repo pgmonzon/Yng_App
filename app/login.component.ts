@@ -18,14 +18,12 @@ export class LoginComponent {
   formularioToken = new TokenFormulario('');
   respuesta = null
 
-  guardarToken(): void {
-    this.formularioToken.token = JSON.stringify(this.respuesta)
-    this.tokenService.guardarToken(this.formularioToken.token)
-    console.log('guardo formulario en ', this.formularioToken)
+  guardarToken(data: string): void {
+    this.tokenService.guardarToken(data)
   }
 
   loguear(): void {
-    this.respuesta = this.loginService.loguear(this.diagnostic)
+    this.respuesta = this.loginService.loguear(this.diagnostic).then(data => this.guardarToken(data))
     this.formulario = this.respuesta
   }
 
