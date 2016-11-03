@@ -13,7 +13,7 @@ export class RegisterComponent {
   constructor(private loginService: LoginService,
               private tokenService: TokenService) { }
 
-  formulario = new RegistrarFormulario('usuario', 'contraseña', 'example@gmail.com');
+  formulario = new RegistrarFormulario('', '', '');
   respuesta = null
 
   pinguear(): void {

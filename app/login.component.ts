@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LoginService }  from './login.service';
 import { TokenService }  from './token.service';
 import { LoginFormulario } from './login';
+import { TokenFormulario } from './token';
 
 @Component({
   selector: 'my-login',
@@ -13,11 +14,14 @@ export class LoginComponent {
   constructor(private loginService: LoginService,
               private tokenService: TokenService) { }
 
-  formulario = new LoginFormulario('usuario', 'contraseña');
+  formulario = new LoginFormulario('', '');
+  formularioToken = new TokenFormulario('');
   respuesta = null
 
-  pinguear(): void {
-    this.tokenService.guardarToken(this.formulario.user)
+  guardarToken(): void {
+    this.formularioToken.token = JSON.stringify(this.respuesta)
+    this.tokenService.guardarToken(this.formularioToken.token)
+    console.log('guardo formulario en ', this.formularioToken)
   }
 
   loguear(): void {
@@ -26,7 +30,7 @@ export class LoginComponent {
   }
 
   mostrarToken(): void{
-    this.formulario = this.tokenService.pedirToken()
+    console.log(this.tokenService.pedirToken())
   }
 
   get diagnostic() { return JSON.stringify(this.formulario); }
