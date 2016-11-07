@@ -13,6 +13,7 @@ import { HeroesComponent }      from './heroes.component';
 import { HeroDetailComponent }  from './hero-detail.component';
 import { LoginComponent }       from './login.component';
 import { RegisterComponent }    from './register.component';
+import { VerificacionComponent } from './verificacion.component';
 import { HeroService }          from './hero.service';
 import { LoginService }         from './login.service';
 import { TokenService }         from './token.service';
@@ -31,6 +32,7 @@ import { TokenService }         from './token.service';
     HeroesComponent,
     LoginComponent,
     RegisterComponent,
+    VerificacionComponent,
   ],
   providers: [
     HeroService,

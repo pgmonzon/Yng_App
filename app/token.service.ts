@@ -13,7 +13,7 @@ export class TokenService {
   }
 
   pedirToken() {
-    return this.token
+    return this.token.token
   }
 
 }

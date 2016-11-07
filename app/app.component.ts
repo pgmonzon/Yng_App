@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
       <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
       <a routerLink="/login" routerLinkActive="active">Login</a>
       <a routerLink="/register" routerLinkActive="active">Register</a>
+      <a routerLink="/codigo" routerLinkActive="active">Codigo</a>
     </nav>
     <router-outlet></router-outlet>
   `,
