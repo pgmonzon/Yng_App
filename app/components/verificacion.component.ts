@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { LoginService }  from './login.service';
-import { TokenService }  from './token.service';
-import { VerificacionFormulario } from './verificacion';
+import { LoginService }  from '../login.service';
+import { TokenService }  from '../token.service';
+import { VerificacionFormulario } from '../verificacion';
 
 
 @Component({
   selector: 'my-login',
-  templateUrl: 'app/verificacion.component.html',
+  templateUrl: 'app/components/verificacion.component.html',
 })
 
 export class VerificacionComponent {

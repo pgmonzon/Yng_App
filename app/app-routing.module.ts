@@ -4,9 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent }   from './components/dashboard.component';
 import { HeroesComponent }      from './components/heroes.component';
 import { HeroDetailComponent }  from './components/hero-detail.component';
-import { LoginComponent }       from './login.component';
-import { RegisterComponent }    from './register.component';
-import { VerificacionComponent } from './verificacion.component';
+import { LoginComponent }       from './components/login.component';
+import { RegisterComponent }    from './components/register.component';
+import { VerificacionComponent } from './components/verificacion.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },

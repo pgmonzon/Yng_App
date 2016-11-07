@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { LoginService }  from './login.service';
-import { TokenService }  from './token.service';
-import { RegistrarFormulario } from './register';
+import { LoginService }  from '../login.service';
+import { TokenService }  from '../token.service';
+import { RegistrarFormulario } from '../register';
 
 @Component({
   selector: 'my-register',
-  templateUrl: 'app/register.component.html',
+  templateUrl: 'app/components/register.component.html',
 })
 
 export class RegisterComponent {

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { LoginService }  from './login.service';
-import { TokenService }  from './token.service';
-import { LoginFormulario } from './login';
-import { TokenFormulario } from './token';
+import { LoginService }  from '../login.service';
+import { TokenService }  from '../token.service';
+import { LoginFormulario } from '../login';
+import { TokenFormulario } from '../token';
 
 @Component({
   selector: 'my-login',
-  templateUrl: 'app/login.component.html',
+  templateUrl: 'app/components/login.component.html',
 })
 
 export class LoginComponent {
