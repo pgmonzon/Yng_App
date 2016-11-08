@@ -6,6 +6,7 @@ import { RegistrarFormulario } from '../register';
 @Component({
   selector: 'my-register',
   templateUrl: 'app/components/register.component.html',
+    styleUrls: [ 'app/components/register.component.css' ]
 })
 
 export class RegisterComponent {
@@ -22,12 +23,12 @@ export class RegisterComponent {
 
   registrar(): void {
     this.respuesta = this.loginService.registrar(this.diagnostic)
-    this.formulario = this.respuesta
   }
 
   mostrar(): void {
     console.log(this.tokenService.pedirToken())
   }
 
+  get drespuesta() { return JSON.stringify(this.respuesta); }
   get diagnostic() { return JSON.stringify(this.formulario); }
 }
