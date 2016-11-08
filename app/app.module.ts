@@ -18,6 +18,8 @@ import { HeroService }          from './hero.service';
 import { LoginService }         from './login.service';
 import { TokenService }         from './token.service';
 
+import { EqualValidator }       from './equal-validator.directive';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -33,6 +35,7 @@ import { TokenService }         from './token.service';
     LoginComponent,
     RegisterComponent,
     VerificacionComponent,
+    EqualValidator,
   ],
   providers: [
     HeroService,

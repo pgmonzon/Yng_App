@@ -2,28 +2,28 @@
 <button (click)="mostrar()">mostrarToken</button>
 <div class="container">
     <h1>Formulario de Registracion</h1>
-    <form>
+    <form (ngSubmit)="registrar()" #registerForm="ngForm">
 
       <div class="form-group">
         <label for="user">Usuario</label>
         <input type="text" class="form-control" id="user" placeholder="Usuario"
                required
-               [(ngModel)]="formulario.user" name="user" minlength="5" maxlength="21"
+               [(ngModel)]="formulario.user" name="user" minlength="5"
                #user="ngModel">
       </div>
 
       <div class="form-group">
         <label for="pwd">Contraseña</label>
-        <input type="password" class="form-control" id="pwd" placeholder="Contraseña" minlength="6" maxlength="20"
-               required
-               [(ngModel)]="formulario.password" name="password">
+        <input type="password" class="form-control" id="pwd" placeholder="Contraseña" minlength="6"
+               [(ngModel)]="formulario.password" name="pwd" reverse="true"
+               required >
       </div>
 
       <div class="form-group">
-        <label for="confirmpwd">Confirmar contraseña</label>
-        <input type="password" class="form-control" id="confirmpwd" placeholder="Confirmar contraseña" minlength="6" maxlength="20"
-               required
-               [(ngModel)]="formulario.confirmpassword" name="confirmpassword">
+        <label for="cpwd">Confirmar contraseña</label>
+        <input type="password" class="form-control" id="cpwd" placeholder="Confirmar contraseña" name="cpwd"
+               [(ngModel)]="formulario.confirmpassword" validateEqual="pwd"
+               required >
       </div>
 
       <div class="form-group">
@@ -35,6 +35,6 @@
                {{drespuesta}}
       </div>
 
-      <button type="submit" class="btn btn-default" (click)="registrar()">Submit</button>
+      <button type="submit" class="btn btn-default" [disabled]="!registerForm.form.valid">Submit</button>
     </form>
 </div>
