@@ -11,6 +11,7 @@ export class LoginService {
   private heroesUrl = 'http://localhost:3113/ping';  // URL to web api
   private loginUrl = 'http://localhost:3113/api/usuarios/login'
   private registerUrl = 'http://localhost:3113/api/usuarios/register'
+  private recuperarUrl = 'http://localhost:3113/api/usuarios/recuperar'
   private verificarUrl = 'http://localhost:3113/api/usuarios/verificar'
   private headers = new Headers({'Content-Type': 'application/json'});
   private token = null
@@ -37,6 +38,13 @@ export class LoginService {
 
   registrar(json: string) {
     return this.http.post(this.registerUrl, json)
+               .toPromise()
+               .then(response => response.json())
+               .catch(this.handleError);
+  }
+
+  recuperar(json: string) {
+    return this.http.post(this.recuperarUrl, json)
                .toPromise()
                .then(response => response.json())
                .catch(this.handleError);
