@@ -7,6 +7,7 @@ import { HeroDetailComponent }  from './components/hero-detail.component';
 import { LoginComponent }       from './components/login.component';
 import { RegisterComponent }    from './components/register.component';
 import { VerificacionComponent } from './components/verificacion.component';
+import { OlvidoComponent }      from './components/olvido.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'heroes',     component: HeroesComponent },
   { path: 'login',     component: LoginComponent },
   { path: 'register',     component: RegisterComponent },
-  { path: 'codigo',	component: VerificacionComponent }
+  { path: 'codigo',	component: VerificacionComponent },
+  { path: 'olvido', component: OlvidoComponent}
 ];
 
 @NgModule({

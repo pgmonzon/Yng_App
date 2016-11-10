@@ -11,6 +11,7 @@ import { Component } from '@angular/core';
       <a routerLink="/login" routerLinkActive="active">Login</a>
       <a routerLink="/register" routerLinkActive="active">Register</a>
       <a routerLink="/codigo" routerLinkActive="active">Codigo</a>
+      <a routerLink="/olvido" routerLinkActive="active">Olvido</a>
     </nav>
     <router-outlet></router-outlet>
   `,
