@@ -9,12 +9,14 @@ import { LoginFormulario } from './login';
 @Injectable()
 export class LoginService {
   private heroesUrl = 'http://localhost:3113/ping';  // URL to web api
-  private loginUrl = 'http://localhost:3113/api/usuarios/login'
-  private registerUrl = 'http://localhost:3113/api/usuarios/register'
-  private recuperarUrl = 'http://localhost:3113/api/usuarios/recuperar'
-  private verificarUrl = 'http://localhost:3113/api/usuarios/verificar'
+  private loginUrl = 'http://localhost:3113/api/usuarios/login';
+  private registerUrl = 'http://localhost:3113/api/usuarios/register';
+  private recuperarUrl = 'http://localhost:3113/api/usuarios/recuperar';
+  private mailconCodigoUrl = 'http://localhost:3113/api/usuarios/recuperar/enviarcodigo';
+  private cambiarpwdUrl = 'http://localhost:3113/api/usuarios/cambiarcontrasena';
+  private verificarUrl = 'http://localhost:3113/api/usuarios/verificar';
   private headers = new Headers({'Content-Type': 'application/json'});
-  private token = null
+  private token = null;
 
   constructor(private http: Http,
               private tokenService: TokenService) { }
@@ -45,6 +47,23 @@ export class LoginService {
 
   recuperar(json: string) {
     return this.http.post(this.recuperarUrl, json)
+               .toPromise()
+               .then(response => response.json())
+               .catch(this.handleError);
+  }
+
+  enviarCodigo(json: string) {
+    return this.http.post(this.mailconCodigoUrl, json)
+               .toPromise()
+               .then(response => response.json())
+               .catch(this.handleError);
+  }
+
+  enviarPwd(json: string) {
+    let headers_auth = new Headers ();
+    var token = this.tokenService.pedirToken()
+    headers_auth.append('Authorization', 'Bearer ' + token)
+    return this.http.post(this.cambiarpwdUrl, json, {headers: headers_auth})
                .toPromise()
                .then(response => response.json())
                .catch(this.handleError);
