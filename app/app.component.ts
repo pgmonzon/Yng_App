@@ -12,11 +12,12 @@ import { Component } from '@angular/core';
       <a routerLink="/register" routerLinkActive="active">Register</a>
       <a routerLink="/codigo" routerLinkActive="active">Codigo</a>
       <a routerLink="/olvido" routerLinkActive="active">Olvido</a>
+      <a routerLink="/fb" routerLinkActive="active">Social Login</a>
     </nav>
     <router-outlet></router-outlet>
   `,
   styleUrls: ['app.component.css'],
 })
 export class AppComponent {
-  title = 'Tour of Heroes';
+  title = 'Yangee';
 }

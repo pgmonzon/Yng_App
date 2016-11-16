@@ -15,6 +15,7 @@ import { LoginComponent }       from './components/login.component';
 import { RegisterComponent }    from './components/register.component';
 import { VerificacionComponent } from './components/verificacion.component';
 import { OlvidoComponent }      from './components/olvido.component';
+import { FacebookLoginComponent } from './components/facebooklogin.component';
 
 import { HeroService }          from './hero.service';
 import { LoginService }         from './login.service';
@@ -38,6 +39,7 @@ import { EqualValidator }       from './equal-validator.directive';
     RegisterComponent,
     VerificacionComponent,
     OlvidoComponent,
+    FacebookLoginComponent,
     EqualValidator,
   ],
   providers: [
