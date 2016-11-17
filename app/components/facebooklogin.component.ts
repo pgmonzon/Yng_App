@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 
 declare const FB:any;
@@ -11,22 +11,37 @@ declare const gapi:any;
 
 export class FacebookLoginComponent implements OnInit {
 
-    constructor() {
+    constructor(private _zone: NgZone) {
+
         FB.init({
             appId      : '146855582455399',
-            cookie     : false,  // enable cookies to allow the server to access
-                                // the session
+            cookie     : false,  // enable cookies to allow the server to access the session
             xfbml      : true,  // parse social plugins on this page
             version    : 'v2.5' // use graph api version 2.5
         });
     }
 
-    onSignIn(googleUser) {
-      console.log("gato");
+    onSignIn = (loggedInUser) => {
+      this._zone.run(() => {
+        console.log(loggedInUser.getBasicProfile().getName());
+      });
     }
 
     onFacebookLoginClick() {
-      FB.login();
+      FB.login( (result: any) => { console.log(result) }     );
+      this.FacebookApi();
+    }
+
+    FacebookApi(){
+      FB.api('/me?fields=id,name,gender,birthday,email,picture.width(150).height(150),age_range,friends',
+          function(result) {
+              if (result && !result.error) {
+                  this.user = result;
+                  console.log(this.user);
+              } else {
+                  console.log(result.error);
+              }
+          });
     }
 
     statusChangeCallback(resp) {
@@ -39,9 +54,8 @@ export class FacebookLoginComponent implements OnInit {
         }
     };
     ngOnInit() {
-        FB.getLoginStatus(response => {
-            this.statusChangeCallback(response);
-        });
+        FB.getLoginStatus(response => { console.log(this.statusChangeCallback(response) ); } );
+        console.log(FB.getLoginStatus());
     }
 
     ngAfterViewInit() {
@@ -51,7 +65,7 @@ export class FacebookLoginComponent implements OnInit {
           'height': 50,
           'longtitle': true,
           'theme': 'dark',
-          'onsuccess': param => this.onSignIn(param)
+          'onSuccess': this.onSignIn
       });
     }
 }
