@@ -61,14 +61,14 @@ export class FacebookLoginComponent implements OnInit {
 
     statusChangeCallback(resp) {
         if (resp.status === 'connected') {
-            console.log("Estamos listossssssssss <-");
+            console.log("Facebook esta conectado");
             return true;
             // connect here with your server for facebook login by passing access token given by facebook
         }else if (resp.status === 'not_authorized') {
             console.log("No estamos autorizados");
 
         }else {
-            console.log("No estamos conectados");
+            console.log("Facebook no esta conectado");
             return false;
         }
     }
@@ -78,21 +78,29 @@ export class FacebookLoginComponent implements OnInit {
     }
 
     ngAfterViewInit() {
+      gapi.load('auth2', console.log("cargando gapi") , function() {
+        gapi.auth2.init({
+          client_id: '885364845288-nk6hrp9rpeli7n8670jpq4nnp75ma79f.apps.googleusercontent.com',
+          scope: 'profile',
+        });
+      });
       gapi.signin2.render('google-login', {
           'scope': 'profile',
           'width': 240,
           'height': 50,
           'longtitle': true,
           'theme': 'dark',
-          'onSuccess': this.onGoogleLoginSuccess,
-          'onfailure': function(err){console.log("error: "+err);}
+          'onSuccess': (usuario) => ( console.log(usuario) ),
+          'onfailure': function(err){console.log("error google: "+err);}
       });
     }
 
-    onGoogleLoginSuccess(loggedInUser) {
-      this.userAuthToken = loggedInUser.getAuthResponse().id_token;
-      this.userDisplayName = loggedInUser.getBasicProfile().getName();
-      console.log(this);
+    onGoogleLoginSuccess(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+      console.log('Name: ' + profile.getName());
+      console.log('Image URL: ' + profile.getImageUrl());
+      console.log('Email: ' + profile.getEmail());
     }
 
 }

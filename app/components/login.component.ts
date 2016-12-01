@@ -3,6 +3,7 @@ import { LoginService }  from '../login.service';
 import { TokenService }  from '../token.service';
 import { LoginFormulario } from '../login';
 import { TokenFormulario } from '../token';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'my-login',
@@ -12,9 +13,10 @@ import { TokenFormulario } from '../token';
 export class LoginComponent {
 
   constructor(private loginService: LoginService,
-              private tokenService: TokenService) { }
+              private tokenService: TokenService,
+              private router: Router,) { }
 
-  formulario = new LoginFormulario('', '');
+  formulario = new LoginFormulario('', '', '');
   formularioToken = new TokenFormulario('');
   respuesta = null
 
@@ -25,6 +27,8 @@ export class LoginComponent {
   loguear(): void {
     this.respuesta = this.loginService.loguear(this.diagnostic).then(data => this.guardarToken(data))
     this.formulario = this.respuesta
+    //this.router.navigate(['/dashboard']);
+    //If success, then go to home
   }
 
   mostrarToken(): void{
