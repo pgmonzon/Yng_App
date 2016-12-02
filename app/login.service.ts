@@ -32,9 +32,12 @@ export class LoginService {
                .catch(this.handleError);
   }
   loguear(json: string) {
-    return this.http.post(this.loginUrl, json)
+    this.http.post(this.loginUrl, json)
                .toPromise()
-               .then(response => response.json())
+               .then(response => {
+                 //return response.json()
+                 return true
+               })
                .catch(this.handleError);
   }
 

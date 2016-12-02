@@ -25,8 +25,9 @@ export class LoginComponent {
   }
 
   loguear(): void {
-    this.respuesta = this.loginService.loguear(this.diagnostic).then(data => this.guardarToken(data))
-    this.formulario = this.respuesta
+    this.loginService.loguear(this.diagnostic)
+    /*this.respuesta = this.loginService.loguear(this.diagnostic).then(data => this.guardarToken(data))
+    this.formulario = this.respuesta*/
     //this.router.navigate(['/dashboard']);
     //If success, then go to home
   }
