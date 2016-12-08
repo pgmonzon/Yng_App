@@ -31,12 +31,20 @@ export class LoginService {
                .then(response => response.json())
                .catch(this.handleError);
   }
-  loguear(json: string) {
-    this.http.post(this.loginUrl, json)
+  loguear(json: string): Promise<boolean>{
+    let respuesta = null;
+    return this.http.post(this.loginUrl, json)
                .toPromise()
                .then(response => {
                  //return response.json()
-                 return true
+                 let body = response.json()
+                 console.log(body)
+                 if (response.status == 201){
+                   console.log('es 201')
+                   return true;
+                 } else {
+                   return false;
+                 }
                })
                .catch(this.handleError);
   }
