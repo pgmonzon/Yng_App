@@ -31,28 +31,32 @@ export class LoginService {
                .then(response => response.json())
                .catch(this.handleError);
   }
-  loguear(json: string): Promise<boolean>{
-    let respuesta = null;
+  loguear(json: string): Promise<any>{
     return this.http.post(this.loginUrl, json)
                .toPromise()
                .then(response => {
-                 //return response.json()
                  let body = response.json()
                  console.log(body)
                  if (response.status == 201){
-                   console.log('es 201')
-                   return true;
+                   return 201;
+                 } else  if (response.status == 202){
+                   return 202;
                  } else {
-                   return false;
+                   return 204;
                  }
                })
                .catch(this.handleError);
   }
 
-  registrar(json: string) {
+  registrar(json: string): Promise<any> {
     return this.http.post(this.registerUrl, json)
                .toPromise()
-               .then(response => response.json())
+               .then(response => {
+                 let body = response.json();
+                 if (response.status == 201){
+                   return 201;
+                 }
+               })
                .catch(this.handleError);
   }
 
