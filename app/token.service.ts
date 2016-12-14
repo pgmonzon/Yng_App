@@ -17,3 +17,18 @@ export class TokenService {
   }
 
 }
+
+@Injectable()
+export class MainUsuarioService {
+  usuario: any;
+
+  //nameChange: Subject<string> = new Subject<string>();
+  constructor() {
+    this.usuario = "Pedro";
+  }
+  guardarUsuario(){
+    this.usuario = 'Marta';
+    //this.nameChange.next(this.usuario);
+  }
+
+}

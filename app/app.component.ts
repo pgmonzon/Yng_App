@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import { MainUsuarioService } from './token.service';
 
 @Component({
   moduleId: module.id,
   selector: 'my-app',
   template: `
     <h1>{{title}}</h1>
+    <h2>{{usuario}}</h2>
     <nav>
       <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
       <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
@@ -19,5 +21,12 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.css'],
 })
 export class AppComponent {
-  title = 'Yangee';
+  usuario: any;
+  constructor(private logged: MainUsuarioService) {
+    this.usuario = logged.usuario;
+    /*this._subscription = logged.nameChange.subscribe((value) => {
+      this.usuario = value;
+    });*/
+  }
+  title = "Yangee";
 }

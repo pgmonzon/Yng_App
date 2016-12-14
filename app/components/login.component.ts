@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService }  from '../login.service';
-import { TokenService }  from '../token.service';
+import { TokenService, MainUsuarioService }  from '../token.service';
 import { LoginFormulario } from '../login';
 import { TokenFormulario } from '../token';
 import { Router } from '@angular/router';
@@ -14,6 +14,7 @@ export class LoginComponent {
 
   constructor(private loginService: LoginService,
               private tokenService: TokenService,
+              private userService: MainUsuarioService,
               private router: Router,) { }
 
   formulario = new LoginFormulario('', '', '');
@@ -27,6 +28,7 @@ export class LoginComponent {
   loguear(): void {
     this.loginService.loguear(this.diagnostic).then(respuesta => {
       if (respuesta == 201) {
+        this.userService.guardarUsuario()
         this.router.navigate(['/dashboard']);
       } else if (respuesta == 202) {
         this.router.navigate(['/codigo']);

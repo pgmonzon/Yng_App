@@ -19,7 +19,7 @@ import { FacebookLoginComponent } from './components/facebooklogin.component';
 
 import { HeroService }          from './hero.service';
 import { LoginService }         from './login.service';
-import { TokenService }         from './token.service';
+import { TokenService, MainUsuarioService }         from './token.service';
 
 import { EqualValidator }       from './equal-validator.directive';
 
@@ -46,6 +46,7 @@ import { EqualValidator }       from './equal-validator.directive';
     HeroService,
     LoginService,
     TokenService,
+    MainUsuarioService,
   ],
   bootstrap: [ AppComponent ]
 })
