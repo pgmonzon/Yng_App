@@ -26,6 +26,7 @@ export class RegisterComponent {
   registrar(): void {
     this.loginService.registrar(this.diagnostic).then(respuesta => {
       if (respuesta == 201) {
+        this.loginService.loguear(this.diagnostic)
         this.router.navigate(['/codigo']);
       }
     } )

@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { AppComponent }         from './app.component';
-import { DashboardComponent }   from './components/dashboard.component';
+import { HomeComponent }   from './components/home.component';
 import { HeroesComponent }      from './components/heroes.component';
 import { HeroDetailComponent }  from './components/hero-detail.component';
 import { LoginComponent }       from './components/login.component';
@@ -32,7 +32,7 @@ import { EqualValidator }       from './equal-validator.directive';
   ],
   declarations: [
     AppComponent,
-    DashboardComponent,
+    HomeComponent,
     HeroDetailComponent,
     HeroesComponent,
     LoginComponent,

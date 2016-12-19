@@ -28,10 +28,8 @@ export class LoginComponent {
   loguear(): void {
     this.loginService.loguear(this.diagnostic).then(respuesta => {
       if (respuesta == 201) {
-        this.userService.cambio(this.formulario.user)
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/']);
       } else if (respuesta == 202) {
-        this.userService.cambio(this.formulario.user)
         this.router.navigate(['/codigo']);
       }
     } )

@@ -1,6 +1,6 @@
 import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
-import { TokenService }  from './token.service';
+import { TokenService, AppComponentLoginService }  from './token.service';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -19,7 +19,8 @@ export class LoginService {
   private token = null;
 
   constructor(private http: Http,
-              private tokenService: TokenService) { }
+              private tokenService: TokenService,
+              private userService: AppComponentLoginService) { }
 
   crearAuthorizationHeader(headers:Headers) {
     var token = this.tokenService.pedirToken()
@@ -36,15 +37,18 @@ export class LoginService {
                .toPromise()
                .then(response => {
                  let body = response.json()
-                 console.log(body)
+                 let login = JSON.parse(json)
+
                  if (response.status == 201){ //201 Es que está todo bien
                    this.tokenService.guardarToken(body);
+                   this.userService.cambio(login.user);
                    return 201;
                  } else  if (response.status == 202){ //202 es que está todo bien pero falta activar la cuenta
                    this.tokenService.guardarToken(body);
+                   this.userService.cambio(login.user)
                    return 202;
                  } else {
-                   return 204;
+                   return response.status;
                  }
                })
                .catch(this.handleError);
