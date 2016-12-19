@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { MainUsuarioService } from './token.service';
+import { Subscription }   from 'rxjs/Subscription';
+
+import { AppComponentLoginService } from './token.service';
 
 @Component({
   moduleId: module.id,
@@ -22,11 +24,13 @@ import { MainUsuarioService } from './token.service';
 })
 export class AppComponent {
   usuario: any;
-  constructor(private logged: MainUsuarioService) {
+  subscription: Subscription;
+
+  constructor(private logged: AppComponentLoginService) {
     this.usuario = logged.usuario;
-    /*this._subscription = logged.nameChange.subscribe((value) => {
+    this.subscription = logged.cambiodeUsuario$.subscribe( value => {
       this.usuario = value;
-    });*/
+    });
   }
   title = "Yangee";
 }

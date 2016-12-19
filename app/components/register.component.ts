@@ -31,10 +31,6 @@ export class RegisterComponent {
     } )
   }
 
-  mostrar(): void {
-    console.log(this.tokenService.pedirToken())
-  }
-
   get drespuesta() { return JSON.stringify(this.respuesta); }
   get diagnostic() { return JSON.stringify(this.formulario); }
 }

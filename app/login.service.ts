@@ -37,9 +37,11 @@ export class LoginService {
                .then(response => {
                  let body = response.json()
                  console.log(body)
-                 if (response.status == 201){
+                 if (response.status == 201){ //201 Es que está todo bien
+                   this.tokenService.guardarToken(body);
                    return 201;
-                 } else  if (response.status == 202){
+                 } else  if (response.status == 202){ //202 es que está todo bien pero falta activar la cuenta
+                   this.tokenService.guardarToken(body);
                    return 202;
                  } else {
                    return 204;
@@ -67,14 +69,14 @@ export class LoginService {
                .catch(this.handleError);
   }
 
-  enviarCodigo(json: string) {
+  enviarCodigo(json: string) { //codigo de verificacion despues de registro
     return this.http.post(this.mailconCodigoUrl, json)
                .toPromise()
                .then(response => response.json())
                .catch(this.handleError);
   }
 
-  enviarPwd(json: string) {
+  enviarPwd(json: string) { //enviar la NUEVA password despues de recuperar la contraseña
     let headers_auth = new Headers ();
     var token = this.tokenService.pedirToken()
     headers_auth.append('Authorization', 'Bearer ' + token)
@@ -84,7 +86,7 @@ export class LoginService {
                .catch(this.handleError);
   }
 
-  verificar(json: string) {
+  verificar(json: string) { //verificar...??? funciones con nombres de mierda
     let headers_auth = new Headers ();
     var token = this.tokenService.pedirToken()
     headers_auth.append('Authorization', 'Bearer ' + token)

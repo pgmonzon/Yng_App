@@ -1,5 +1,10 @@
+/*
+*   Servicio de tokens y constructor del nombre en la navbar o app component (el que dice si estás logueado o no)
+*/
+
 import { Injectable }    from '@angular/core';
 import { TokenFormulario } from './token';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class TokenService {
@@ -19,16 +24,17 @@ export class TokenService {
 }
 
 @Injectable()
-export class MainUsuarioService {
+export class AppComponentLoginService {
   usuario: any;
 
-  //nameChange: Subject<string> = new Subject<string>();
-  constructor() {
-    this.usuario = "Pedro";
-  }
-  guardarUsuario(){
-    this.usuario = 'Marta';
-    //this.nameChange.next(this.usuario);
+  constructor(){this.usuario = 'Nadie logueado';}
+
+  private cambiodeUsuarioSource = new Subject<string>();
+  cambiodeUsuario$ = this.cambiodeUsuarioSource.asObservable();
+
+  cambio(valor: string){
+    this.usuario = valor
+    this.cambiodeUsuarioSource.next(this.usuario)
   }
 
 }
