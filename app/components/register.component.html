@@ -1,4 +1,3 @@
-<button (click)="pinguear()">PING</button>
 <div class="container">
     <h1>Formulario de Registracion</h1>
     <form (ngSubmit)="registrar()" #registerForm="ngForm">
@@ -30,7 +29,6 @@
         <input type="email" class="form-control" id="email" placeholder="email@example.com"
                required
                [(ngModel)]="formulario.email" name="email" maxlength="50">
-               {{diagnostic}}
 
       <div class="olvidar"><a routerLink="/olvido">¿Olvidaste la contraseña?</a></div>
       </div>
