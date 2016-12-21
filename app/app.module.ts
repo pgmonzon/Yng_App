@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 
+import { DropdownModule } from "ng2-dropdown";
+
 import { AppRoutingModule } from './app-routing.module';
 
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -12,6 +14,7 @@ import { HomeComponent }   from './components/home.component';
 import { HeroesComponent }      from './components/heroes.component';
 import { HeroDetailComponent }  from './components/hero-detail.component';
 import { LoginComponent }       from './components/login.component';
+import { LogoutComponent }       from './components/logout.component';
 import { RegisterComponent }    from './components/register.component';
 import { VerificacionComponent } from './components/verificacion.component';
 import { OlvidoComponent }      from './components/olvido.component';
@@ -29,6 +32,7 @@ import { EqualValidator }       from './equal-validator.directive';
     FormsModule,
     HttpModule,
     AppRoutingModule,
+    DropdownModule,
   ],
   declarations: [
     AppComponent,
@@ -36,6 +40,7 @@ import { EqualValidator }       from './equal-validator.directive';
     HeroDetailComponent,
     HeroesComponent,
     LoginComponent,
+    LogoutComponent,
     RegisterComponent,
     VerificacionComponent,
     OlvidoComponent,

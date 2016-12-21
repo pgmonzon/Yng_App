@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 @Component({
   moduleId: module.id,
-  selector: 'my-dashboard',
+  selector: 'home',
   templateUrl: 'home.component.html',
   styleUrls: [ 'home.component.css' ]
 })

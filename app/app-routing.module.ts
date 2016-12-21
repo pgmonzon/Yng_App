@@ -5,6 +5,7 @@ import { HomeComponent }   from './components/home.component';
 import { HeroesComponent }      from './components/heroes.component';
 import { HeroDetailComponent }  from './components/hero-detail.component';
 import { LoginComponent }       from './components/login.component';
+import { LogoutComponent }       from './components/logout.component';
 import { RegisterComponent }    from './components/register.component';
 import { VerificacionComponent } from './components/verificacion.component';
 import { OlvidoComponent }      from './components/olvido.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'detail/:id', component: HeroDetailComponent },
   { path: 'heroes',     component: HeroesComponent },
   { path: 'login',     component: LoginComponent },
+  { path: 'logout',     component: LogoutComponent },
   { path: 'register',     component: RegisterComponent },
   { path: 'codigo',	component: VerificacionComponent },
   { path: 'olvido', component: OlvidoComponent},

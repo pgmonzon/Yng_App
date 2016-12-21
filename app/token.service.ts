@@ -17,6 +17,10 @@ export class TokenService {
     console.log('hola acabo de guardar el token ', this.token);
   }
 
+  borrarToken() {
+    this.token = null;
+  }
+
   pedirToken() {
     return this.token.token
   }
@@ -27,7 +31,7 @@ export class TokenService {
 export class AppComponentLoginService {
   usuario: any;
 
-  constructor(){this.usuario = 'Nadie logueado';}
+  constructor(){this.usuario = '';}
 
   private cambiodeUsuarioSource = new Subject<string>();
   cambiodeUsuario$ = this.cambiodeUsuarioSource.asObservable();
