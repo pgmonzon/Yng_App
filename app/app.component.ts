@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Subscription }   from 'rxjs/Subscription';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponentLoginService } from './token.service';
 
@@ -9,7 +10,7 @@ import { AppComponentLoginService } from './token.service';
   template: `
     <h1><a routerLink="/">{{title}}</a></h1>
 
-    <div style="float: center;">
+    <!--<div style="float: center;">
       <div *ngIf="logueado" class="dropdown" dropdown>
         <button class="btn btn-primary" dropdown-open>Perfil</button>
         <ul class="dropdown-menu">
@@ -21,11 +22,18 @@ import { AppComponentLoginService } from './token.service';
           <li><a href="#">Configuración</a></li>
           <li><a href="/logout">Logout</a></li>
         </ul>
+      </div> -->
+
+      <div *ngIf="logueado" ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary" id="dropdownMenu1" ngbDropdownToggle>{{usuario}}</button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <a href="/logout" class="dropdown-item">Logout</a>
+          </div>
       </div>
       <div *ngIf="!logueado">
         <nav><a routerLink="/login" routerLinkActive="active">Login</a></nav>
       </div>
-    </div>
+    <!--</div> -->
 
       <!--<nav>
         <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>

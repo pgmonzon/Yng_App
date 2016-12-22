@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 
-import { DropdownModule } from "ng2-dropdown";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -32,7 +32,7 @@ import { EqualValidator }       from './equal-validator.directive';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    DropdownModule,
+    NgbModule.forRoot(),
   ],
   declarations: [
     AppComponent,

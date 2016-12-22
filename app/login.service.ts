@@ -73,7 +73,7 @@ export class LoginService {
                .catch(this.handleError);
   }
 
-  enviarCodigo(json: string) { //codigo de verificacion despues de registro
+  enviarCodigo(json: string) { //???
     return this.http.post(this.mailconCodigoUrl, json)
                .toPromise()
                .then(response => response.json())
@@ -90,13 +90,17 @@ export class LoginService {
                .catch(this.handleError);
   }
 
-  verificar(json: string) { //verificar...??? funciones con nombres de mierda
+  verificarCodigo(json: string) { //envia el codigo de verificacion de cuenta despues del registro
     let headers_auth = new Headers ();
     var token = this.tokenService.pedirToken()
     headers_auth.append('Authorization', 'Bearer ' + token)
     return this.http.post(this.verificarUrl, json, {headers: headers_auth})
                .toPromise()
-               .then(response => response.json())
+               .then(response => {
+                  if (response.status == 201){
+                    return 201;
+                  }
+               })
                .catch(this.handleError);
   }
 
