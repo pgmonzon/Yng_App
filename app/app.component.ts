@@ -9,21 +9,6 @@ import { AppComponentLoginService } from './token.service';
   selector: 'my-app',
   template: `
     <h1><a routerLink="/">{{title}}</a></h1>
-
-    <!--<div style="float: center;">
-      <div *ngIf="logueado" class="dropdown" dropdown>
-        <button class="btn btn-primary" dropdown-open>Perfil</button>
-        <ul class="dropdown-menu">
-          <li>Logueado como: <b>{{usuario}}</b></li>
-          <li><a href="#">Mi perfil</a></li>
-          <li><a href="#">Mis compras</a></li>
-          <li><a href="#">Ayuda</a></li>
-          <li><hr></li>
-          <li><a href="#">Configuración</a></li>
-          <li><a href="/logout">Logout</a></li>
-        </ul>
-      </div> -->
-
       <div *ngIf="logueado" ngbDropdown class="d-inline-block">
           <button class="btn btn-outline-primary" id="dropdownMenu1" ngbDropdownToggle>{{usuario}}</button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenu1">

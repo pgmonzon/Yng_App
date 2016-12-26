@@ -18,14 +18,10 @@
 
       <button type="submit" class="btn btn-default" (click)="loguear()">Submit</button>
     </form>
+    <div>
+      <button class="btn btn-lg btn-social btn-facebook" style="font-size: 1.5em;" (click)="onFacebookLoginClick()">
+        <i class="fa fa-facebook fa-fw"></i>Facebook
+      </button>
+    </div>
+    <div id="google-login" data-onsuccess="onGoogleLoginSuccess"></div>
 </div>
-
-<div>
-	<button class="btn btn-lg btn-social btn-facebook" style="font-size: 1.5em;" (click)="onFacebookLoginClick()">
-	    <i class="fa fa-facebook fa-fw"></i>Facebook
-	</button>
-
-</div>
-{{username}}
-
-<div id="google-login" data-onsuccess="onGoogleLoginSuccess"></div>

@@ -64,6 +64,7 @@ export class LoginComponent implements OnInit {
       FB.getLoginStatus(response => { (this.conectado = this.statusChangeCallback(response)); } );
       if (!this.conectado){
         FB.login();
+        this.onFacebookLoginClick();
       } else {
         this.FacebookApi();
       }
@@ -89,7 +90,7 @@ export class LoginComponent implements OnInit {
 
     loguearFacebook(user: string) {
       console.log("LOGUEANDO:", user);
-      this.loginService.loguear(user);
+      this.loginService.loguearFacebook(user);
     }
 
     statusChangeCallback(resp) {
