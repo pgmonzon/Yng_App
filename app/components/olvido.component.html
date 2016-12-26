@@ -1,0 +1,53 @@
+<div class="container">
+  <div>
+    <h1>Inserte su email</h1>
+    <h4>Le enviaremos un codigo de 6 letras a su<br>correo electronico. Insertelo a continuación para cambiar su contraseña</h4>
+    <form>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" placeholder="example@gmail.com"
+               required [(ngModel)]="formulario.email" [disabled]="activo"
+               name="email">
+        <div [hidden]="!activo" class="alert alert-danger"> Chequee su correo basura </div>
+      </div>
+
+      <button type="submit" class="btn btn-default" (click)="enviarMail()" [disabled]="activo">Submit</button>
+    </form>
+ </div>
+ <div>
+    <form *ngIf="activo" #codigoForm="ngForm">
+      <h4>Inserte el código respetando mayúsculas y minúsculas.</h4>
+
+      <div class="form-group">
+        <label for="codigo">Codigo</label>
+        <input type="text" class="form-control" id="codigo" placeholder="asDFgH"
+               required [(ngModel)]="formulario.codigo"
+               name="codigo">
+      </div>
+
+      <button type="submit" class="btn btn-default" (click)="enviarCodigo()">Submit</button>
+    </form>
+ </div>
+ <div [hidden]="formulario_contrasena">
+    <form *ngIf="activo" #codigoForm="ngForm">
+      <h4>Inserte su nueva contraseña.</h4>
+
+      <div class="form-group">
+        <label for="pwd">Contraseña</label>
+        <input type="password" class="form-control" id="pwd" placeholder="Contraseña" minlength="6"
+               [(ngModel)]="formulario.password" name="pwd" reverse="true"
+               required >
+      </div>
+
+      <div class="form-group">
+        <label for="cpwd">Confirmar contraseña</label>
+        <input type="password" class="form-control" id="cpwd" placeholder="Confirmar contraseña" name="cpwd"
+               [(ngModel)]="formulario.confirmpassword" validateEqual="pwd"
+               required >
+      </div>
+
+      <button type="submit" class="btn btn-default" (click)="enviarPwd()">Submit</button>
+    </form>
+ </div>
+</div>
