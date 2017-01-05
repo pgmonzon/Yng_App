@@ -89,7 +89,7 @@ export class LoginService {
     let headers_auth = new Headers ();
     var token = this.tokenService.pedirToken()
     headers_auth.append('Authorization', 'Bearer ' + token)
-    return this.http.post(this.usuarios + 'verificar', json, {headers: headers_auth})
+    return this.http.post(this.usuarios + '/verificar', json, {headers: headers_auth})
                .toPromise()
                .then(response => {
                   if (response.status == 201){
