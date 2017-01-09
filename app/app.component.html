@@ -1,0 +1,38 @@
+<h1 class="navbar"><a routerLink="/">{{title}}</a></h1>
+
+<!-- Botones centrales del navbar --->
+<div *ngIf="logueado" class="dropdown-navbar navbar">
+  <div ngbDropdown class="d-inline-block opciones">
+    <button class="btn btn-outline-primary" id="dropdownOpcionUno" ngbDropdownToggle>Opcion 1</button>
+    <div class="dropdown-menu" aria-labelledby="dropdownOpcionUno">
+      <a href="/logout" class="dropdown-item">A</a>
+    </div>
+  </div>
+  <div ngbDropdown class="d-inline-block opciones">
+    <button class="btn btn-outline-primary" id="dropdownOpcionDos" ngbDropdownToggle>Opcion 2</button>
+    <div class="dropdown-menu" aria-labelledby="dropdownOpcionDos">
+      <a href="/logout" class="dropdown-item">B</a>
+      <li class="dropdown-submenu">
+        <a tabindex="-1" href="#">Hover me for more options</a>
+        <ul class="dropdown-menu">
+          <a href="/logout" class="dropdown-item">B</a>
+    </div>
+  </div>
+</div>
+
+<!-- Login y logout, a la derecha --->
+<div class="botones-login navbar">
+  <div *ngIf="logueado" ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownLoguin" ngbDropdownToggle>{{usuario}}</button>
+      <div class="dropdown-menu" aria-labelledby="dropdownLoguin">
+          <a href="/logout" class="dropdown-item">Logout</a>
+      </div>
+  </div>
+
+  <div *ngIf="!logueado">
+    <nav><a routerLink="/login" routerLinkActive="active">Login</a></nav>
+  </div>
+</div>
+
+<!--</div> -->
+<router-outlet></router-outlet>

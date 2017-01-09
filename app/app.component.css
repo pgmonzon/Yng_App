@@ -3,10 +3,6 @@ h1 {
   color: #999;
   margin-bottom: 0;
 }
-div {
-  position: absolute;
-  right: 100px;
-}
 
 nav a {
   padding: 5px 10px;
@@ -25,4 +21,17 @@ nav a:hover {
 }
 nav a.active {
   color: #039be5;
+}
+
+.botones-login {
+  position: absolute;
+  right: 100px;
+}
+
+.opciones {
+  left: 15%;
+}
+
+.navbar {
+  display: inline-block;
 }
