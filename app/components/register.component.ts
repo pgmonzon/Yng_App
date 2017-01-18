@@ -19,10 +19,6 @@ export class RegisterComponent {
   formulario = new RegistrarFormulario('', '', '');
   respuesta = null
 
-  pinguear(): void {
-    this.loginService.ping()
-  }
-
   registrar(): void {
     this.loginService.registrar(this.diagnostic).then(respuesta => {
       if (respuesta == 201) {

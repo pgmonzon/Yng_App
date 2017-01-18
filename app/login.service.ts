@@ -8,7 +8,7 @@ import { LoginFormulario } from './login';
 
 @Injectable()
 export class LoginService {
-  private root = 'http://localhost:3113/';  // URL to web api
+  private root = 'http://localhost:3113';  // URL to web api
   private usuarios = 'http://localhost:3113/api/usuarios';
   private headers = new Headers({'Content-Type': 'application/json'});
   private token = null;
@@ -21,12 +21,6 @@ export class LoginService {
     var token = this.tokenService.pedirToken()
   }
 
-  ping() {
-    return this.http.get(this.root + '/ping')
-               .toPromise()
-               .then(response => response.json())
-               .catch(this.handleError);
-  }
   loguear(json: string): Promise<any>{
     return this.http.post(this.usuarios + '/login', json)
                .toPromise()
@@ -70,6 +64,16 @@ export class LoginService {
 
   enviarCodigo(json: string) { //???
     return this.http.post(this.usuarios + '/recuperar/enviarcodigo', json)
+               .toPromise()
+               .then(response => response.json())
+               .catch(this.handleError);
+  }
+
+  securedPing() { //secured ping hecho para tests de tokens
+    let headers_auth = new Headers ();
+    var token = this.tokenService.pedirToken()
+    headers_auth.append('Authorization', 'Bearer ' + token)
+    return this.http.get(this.root + '/secured/ping', {headers: headers_auth})
                .toPromise()
                .then(response => response.json())
                .catch(this.handleError);
