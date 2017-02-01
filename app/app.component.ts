@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription }   from 'rxjs/Subscription';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponentLoginService } from './token.service';
+import { RbacService }  from './rbac.service';
 
 @Component({
   moduleId: module.id,
@@ -16,7 +17,7 @@ export class AppComponent {
   usuario: any;
   subscription: Subscription;
 
-  constructor(private logged: AppComponentLoginService) {
+  constructor(private rbacService: RbacService, private logged: AppComponentLoginService) {
     this.usuario = logged.usuario;
     this.subscription = logged.cambiodeUsuario$.subscribe( value => {
       this.usuario = value;
@@ -24,4 +25,9 @@ export class AppComponent {
     });
   }
   title = "Yangee";
+
+  //ngOnInit(){
+  laconchatuya(){
+    console.log(this.rbacService.pedirPermisos())
+  }
 }

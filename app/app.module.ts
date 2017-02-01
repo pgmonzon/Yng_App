@@ -22,6 +22,7 @@ import { FacebookLoginComponent } from './components/facebooklogin.component';
 
 import { HeroService }          from './hero.service';
 import { LoginService }         from './login.service';
+import { RbacService }          from './rbac.service';
 import { TokenService, AppComponentLoginService }         from './token.service';
 
 import { EqualValidator }       from './equal-validator.directive';
@@ -50,6 +51,7 @@ import { EqualValidator }       from './equal-validator.directive';
   providers: [
     HeroService,
     LoginService,
+    RbacService,
     TokenService,
     AppComponentLoginService,
   ],

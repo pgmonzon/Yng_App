@@ -1,6 +1,8 @@
 <h1 class="navbar"><a routerLink="/">{{title}}</a></h1>
 
 <!-- Botones centrales del navbar --->
+<button class="btn" style="font-size: 1.5em;" (click)="laconchatuya()">rbac</button>
+
 <div *ngIf="logueado" class="dropdown-navbar navbar">
   <div ngbDropdown class="d-inline-block opciones">
     <button class="btn btn-outline-primary" id="dropdownOpcionUno" ngbDropdownToggle>Opcion 1</button>
