@@ -1,21 +1,25 @@
 <h1 class="navbar"><a routerLink="/">{{title}}</a></h1>
 
 <!-- Botones centrales del navbar --->
-<button class="btn" style="font-size: 1.5em;" (click)="laconchatuya()">rbac</button>
+<button class="btn" style="font-size: 1.5em;" (click)="menu()">rbac</button>
 
 <div *ngIf="logueado" class="dropdown-navbar navbar">
-  <div ngbDropdown class="d-inline-block opciones">
-    <button class="btn btn-outline-primary" id="dropdownOpcionUno" ngbDropdownToggle>Opcion 1</button>
-    <div class="dropdown-menu" aria-labelledby="dropdownOpcionUno">
-      <a href="/logout" class="dropdown-item">A</a>
+  <div *ngFor="let menu of menues_padres" class="d-inline-block opciones">
+    <div ngbDropdown class="d-inline-block opciones">
+      <button class="btn btn-outline-primary" id="dropdownOpcionUno" ngbDropdownToggle>{{menu.desc}}</button>
+      <div class="dropdown-menu" aria-labelledby="dropdownOpcionUno">
+        <div *ngFor="let hijo of conseguirMenuesHijos(menu)">
+          <a href="{{hijo.url}}" class="dropdown-item">{{hijo.desc}}</a>
+        </div>
+      </div>
     </div>
   </div>
-  <div ngbDropdown class="d-inline-block opciones">
+  <!--<div ngbDropdown class="d-inline-block opciones">
     <button class="btn btn-outline-primary" id="dropdownOpcionDos" ngbDropdownToggle>Opcion 2</button>
     <div class="dropdown-menu" aria-labelledby="dropdownOpcionDos">
       <a href="/logout" class="dropdown-item">B</a>
     </div>
-  </div>
+  </div>--->
 </div>
 
 <!-- Login y logout, a la derecha --->

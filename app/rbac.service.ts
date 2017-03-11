@@ -2,6 +2,8 @@ import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { TokenService }  from './token.service';
 
+import { MenuObjeto }  from './menu';
+
 import 'rxjs/add/operator/toPromise';
 
 import { LoginFormulario } from './login';
@@ -23,6 +25,14 @@ export class RbacService {
     return this.http.get(this.usuarios + '/permisos', {headers: headers_auth})
                .toPromise()
                .then(response => response.json())
+               //.catch(this.handleError);
+  }
+
+
+  pedirMenues(): Promise<MenuObjeto[]> {
+    return this.http.get('http://localhost:3113/api/menues')
+               .toPromise()
+               .then(response => <MenuObjeto[]>response.json())
                //.catch(this.handleError);
   }
 }
